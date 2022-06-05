@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pot_orange.png-7c92f366417b2550144ebf43ccc932a4.stex"
+path="res://.import/pot_purple.png-8f86b6ac534f3edcc135543c612b3396.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imgs/pot_orange.png"
-dest_files=[ "res://.import/pot_orange.png-7c92f366417b2550144ebf43ccc932a4.stex" ]
+source_file="res://imgs/other/pot_purple.png"
+dest_files=[ "res://.import/pot_purple.png-8f86b6ac534f3edcc135543c612b3396.stex" ]
 
 [params]
 
