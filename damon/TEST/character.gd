@@ -14,7 +14,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	check_idle()
 
 
@@ -31,7 +31,7 @@ func check_idle():
 	if moving:
 		$AnimatedSprite.play(direction)
 	else:
-		$AnimatedSprite.stop()
+		$AnimatedSprite.frame = 0
 
 
 func movement_input():
