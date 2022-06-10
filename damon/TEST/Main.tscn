@@ -5,11 +5,13 @@
 [node name="Node" type="Node"]
 
 [node name="path" type="TileMap" parent="."]
+z_index = -2
 cell_size = Vector2( 16, 16 )
 show_collision = true
 format = 1
 
 [node name="grass" type="TileMap" parent="."]
+z_index = -1
 cell_size = Vector2( 16, 16 )
 show_collision = true
 format = 1
@@ -23,4 +25,4 @@ show_collision = true
 format = 1
 
 [node name="character" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 495, 300 )
+position = Vector2( 489, 295 )
