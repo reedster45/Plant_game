@@ -24,9 +24,6 @@ func _physics_process(_delta):
 	
 
 
-
-
-
 func check_idle():
 	if moving:
 		$AnimatedSprite.play(direction)
