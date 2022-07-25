@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://imgs/characterUI/over.png" type="Texture" id=1]
+[ext_resource path="res://imgs/characterUI/under.png" type="Texture" id=2]
+[ext_resource path="res://FoodTimer.gd" type="Script" id=3]
+[ext_resource path="res://Food.gd" type="Script" id=4]
+
+[node name="CharacterUI" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Health" type="TextureProgress" parent="CanvasLayer"]
+margin_left = 5.0
+margin_top = 7.0
+margin_right = 105.0
+margin_bottom = 28.0
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+tint_over = Color( 0, 0, 0, 1 )
+tint_progress = Color( 0.670588, 0.129412, 0.129412, 1 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+
+[node name="Food" type="TextureProgress" parent="CanvasLayer"]
+margin_left = 5.0
+margin_top = 30.0
+margin_right = 105.0
+margin_bottom = 51.0
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+tint_over = Color( 0, 0, 0, 1 )
+tint_progress = Color( 0.737255, 0.607843, 0.129412, 1 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+script = ExtResource( 4 )
+
+[node name="FoodTimer" type="Timer" parent="CanvasLayer/Food"]
+script = ExtResource( 3 )
+
+[node name="Water" type="TextureProgress" parent="CanvasLayer"]
+margin_left = 5.0
+margin_top = 54.0
+margin_right = 105.0
+margin_bottom = 75.0
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+tint_over = Color( 0, 0, 0, 1 )
+tint_progress = Color( 0.117647, 0.341176, 0.815686, 1 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+
+[connection signal="timeout" from="CanvasLayer/Food/FoodTimer" to="CanvasLayer/Food" method="_on_Timer_timeout"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://imgs/character/run_left.png" type="Texture" id=1]
 [ext_resource path="res://imgs/character/run_up.png" type="Texture" id=2]
 [ext_resource path="res://imgs/character/run_right.png" type="Texture" id=3]
 [ext_resource path="res://imgs/character/run_down.png" type="Texture" id=4]
 [ext_resource path="res://character.gd" type="Script" id=5]
+[ext_resource path="res://CharacterUI.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=51]
 radius = 2.23607
@@ -145,3 +146,5 @@ animation = "right"
 current = true
 zoom = Vector2( 0.3, 0.3 )
 smoothing_enabled = true
+
+[node name="CharacterUI" parent="." instance=ExtResource( 6 )]
