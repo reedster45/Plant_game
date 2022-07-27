@@ -1,23 +1,22 @@
 extends TextureProgress
 
-
-signal Food_empty
+signal Water_empty
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	pass 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	_check_empty()
 
+
 func _check_empty():
 	if value <= 0:
-		emit_signal("Food_empty")
-	
+		emit_signal("Water_empty")
 
-func _on_FoodTimer_timeout():
+
+func _on_WaterTimer_timeout():
 	value -= 50
-	$FoodTimer.startTimer()
-
+	$WaterTimer.startTimer()

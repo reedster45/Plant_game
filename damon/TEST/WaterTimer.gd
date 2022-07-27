@@ -12,4 +12,4 @@ func _ready():
 
 
 func startTimer():
-	start(2)
+	start(1)

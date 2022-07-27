@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://imgs/characterUI/over.png" type="Texture" id=1]
 [ext_resource path="res://imgs/characterUI/under.png" type="Texture" id=2]
 [ext_resource path="res://FoodTimer.gd" type="Script" id=3]
 [ext_resource path="res://Food.gd" type="Script" id=4]
+[ext_resource path="res://Water.gd" type="Script" id=5]
+[ext_resource path="res://WaterTimer.gd" type="Script" id=6]
+[ext_resource path="res://Health.gd" type="Script" id=7]
+[ext_resource path="res://CharacterUI.gd" type="Script" id=8]
+[ext_resource path="res://HealthTimer.gd" type="Script" id=9]
 
 [node name="CharacterUI" type="Node2D"]
+script = ExtResource( 8 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -25,12 +31,15 @@ stretch_margin_left = 3
 stretch_margin_top = 3
 stretch_margin_right = 3
 stretch_margin_bottom = 3
+script = ExtResource( 7 )
 
-[node name="Food" type="TextureProgress" parent="CanvasLayer"]
-margin_left = 5.0
-margin_top = 30.0
-margin_right = 105.0
-margin_bottom = 51.0
+[node name="HealthTimer" type="Timer" parent="CanvasLayer/Health"]
+script = ExtResource( 9 )
+
+[node name="Food" type="TextureProgress" parent="CanvasLayer/Health"]
+margin_top = 23.0
+margin_right = 100.0
+margin_bottom = 44.0
 value = 100.0
 texture_under = ExtResource( 2 )
 texture_over = ExtResource( 1 )
@@ -44,14 +53,13 @@ stretch_margin_right = 3
 stretch_margin_bottom = 3
 script = ExtResource( 4 )
 
-[node name="FoodTimer" type="Timer" parent="CanvasLayer/Food"]
+[node name="FoodTimer" type="Timer" parent="CanvasLayer/Health/Food"]
 script = ExtResource( 3 )
 
-[node name="Water" type="TextureProgress" parent="CanvasLayer"]
-margin_left = 5.0
-margin_top = 54.0
-margin_right = 105.0
-margin_bottom = 75.0
+[node name="Water" type="TextureProgress" parent="CanvasLayer/Health"]
+margin_top = 47.0
+margin_right = 100.0
+margin_bottom = 68.0
 value = 100.0
 texture_under = ExtResource( 2 )
 texture_over = ExtResource( 1 )
@@ -63,5 +71,13 @@ stretch_margin_left = 3
 stretch_margin_top = 3
 stretch_margin_right = 3
 stretch_margin_bottom = 3
+script = ExtResource( 5 )
 
-[connection signal="timeout" from="CanvasLayer/Food/FoodTimer" to="CanvasLayer/Food" method="_on_Timer_timeout"]
+[node name="WaterTimer" type="Timer" parent="CanvasLayer/Health/Water"]
+script = ExtResource( 6 )
+
+[connection signal="timeDone" from="CanvasLayer/Health/HealthTimer" to="CanvasLayer/Health" method="_on_HealthTimer_timeDone"]
+[connection signal="Food_empty" from="CanvasLayer/Health/Food" to="CanvasLayer/Health" method="_on_Food_Food_empty"]
+[connection signal="timeout" from="CanvasLayer/Health/Food/FoodTimer" to="CanvasLayer/Health/Food" method="_on_FoodTimer_timeout"]
+[connection signal="Water_empty" from="CanvasLayer/Health/Water" to="CanvasLayer/Health" method="_on_Water_Water_empty"]
+[connection signal="timeout" from="CanvasLayer/Health/Water/WaterTimer" to="CanvasLayer/Health/Water" method="_on_WaterTimer_timeout"]
