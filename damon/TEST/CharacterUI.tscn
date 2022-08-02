@@ -76,8 +76,6 @@ script = ExtResource( 5 )
 [node name="WaterTimer" type="Timer" parent="CanvasLayer/Health/Water"]
 script = ExtResource( 6 )
 
-[connection signal="timeDone" from="CanvasLayer/Health/HealthTimer" to="CanvasLayer/Health" method="_on_HealthTimer_timeDone"]
-[connection signal="Food_empty" from="CanvasLayer/Health/Food" to="CanvasLayer/Health" method="_on_Food_Food_empty"]
+[connection signal="timeout" from="CanvasLayer/Health/HealthTimer" to="CanvasLayer/Health" method="_on_HealthTimer_timeout"]
 [connection signal="timeout" from="CanvasLayer/Health/Food/FoodTimer" to="CanvasLayer/Health/Food" method="_on_FoodTimer_timeout"]
-[connection signal="Water_empty" from="CanvasLayer/Health/Water" to="CanvasLayer/Health" method="_on_Water_Water_empty"]
 [connection signal="timeout" from="CanvasLayer/Health/Water/WaterTimer" to="CanvasLayer/Health/Water" method="_on_WaterTimer_timeout"]

@@ -1,7 +1,8 @@
 extends TextureProgress
 
 
-signal Food_empty
+var noFood = false
+var empty = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,14 +11,16 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	_check_empty()
-
-func _check_empty():
-	if value <= 0:
-		emit_signal("Food_empty")
+	pass
 	
 
 func _on_FoodTimer_timeout():
-	value -= 50
-	$FoodTimer.startTimer()
+	if value <= 0:
+		noFood = true
+		empty = true
+		$FoodTimer.stop()
+		
+	if !empty:
+		value -= 50
+		$FoodTimer.startTimer()
 

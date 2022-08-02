@@ -1,6 +1,7 @@
 extends TextureProgress
 
-signal Water_empty
+var noWater = false
+var empty = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,14 +10,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	_check_empty()
-
-
-func _check_empty():
-	if value <= 0:
-		emit_signal("Water_empty")
+	pass
 
 
 func _on_WaterTimer_timeout():
-	value -= 50
-	$WaterTimer.startTimer()
+	if value <= 0:
+		noWater = true
+		empty = true
+		$WaterTimer.stop()
+		
+	if !empty:
+		value -= 50
+		$WaterTimer.startTimer()
